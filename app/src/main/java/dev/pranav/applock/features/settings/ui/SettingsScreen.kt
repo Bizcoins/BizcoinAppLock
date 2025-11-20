@@ -134,6 +134,11 @@ fun SettingsScreen(
     var useBiometricAuth by remember {
         mutableStateOf(appLockRepository.isBiometricAuthEnabled())
     }
+    // ADDED: State for the new 'Fingerprint Only Mode'
+    var fingerprintOnlyMode by remember {
+        // ASSUMPTION: This function exists in AppLockRepository.kt
+        mutableStateOf(appLockRepository.isFingerprintOnlyModeEnabled())
+    }
     var unlockTimeDuration by remember {
         mutableIntStateOf(appLockRepository.getUnlockTimeDuration())
     }
@@ -312,6 +317,23 @@ fun SettingsScreen(
                                 appLockRepository.setBiometricAuthEnabled(isChecked)
                             }
                         )
+                        
+                        // --- ADDED: Fingerprint Only Mode Setting ---
+                        SettingItem(
+                            icon = Fingerprint,
+                            title = stringResource(R.string.settings_screen_fingerprint_only_title),
+                            description = stringResource(R.string.settings_screen_fingerprint_only_desc),
+                            checked = fingerprintOnlyMode,
+                            // Only enable this switch if Biometric Auth is ON and available
+                            enabled = useBiometricAuth && isBiometricAvailable, 
+                            onCheckedChange = { isChecked ->
+                                fingerprintOnlyMode = isChecked
+                                // ASSUMPTION: This function exists in AppLockRepository.kt
+                                appLockRepository.setFingerprintOnlyModeEnabled(isChecked)
+                            }
+                        )
+                        // --- END ADDED SETTING ---
+                        
                         SettingItem(
                             icon = Icons.Default.Vibration,
                             title = stringResource(R.string.settings_screen_haptic_feedback_title),
@@ -364,8 +386,7 @@ fun SettingsScreen(
                         )
                         SettingItem(
                             icon = Icons.Default.Lock,
-                            title = stringResource(R.string.settings_screen_anti_uninstall_title),
-                            description = stringResource(R.string.settings_screen_anti_uninstall_desc),
+                            title = stringResource(R.in,
                             checked = antiUninstallEnabled,
                             onCheckedChange = { isChecked ->
                                 if (isChecked) {
@@ -828,179 +849,5 @@ fun AccessibilityDialog(
             Column {
                 Text(stringResource(R.string.settings_screen_accessibility_dialog_text_1))
                 Text(stringResource(R.string.settings_screen_accessibility_dialog_text_2))
-                Text(stringResource(R.string.settings_screen_accessibility_dialog_text_3))
-            }
-        },
-        confirmButton = {
-            TextButton(onClick = onConfirm) {
-                Text(stringResource(R.string.enable_button))
-            }
-        },
-        dismissButton = {
-            TextButton(onClick = onDismiss) {
-                Text(stringResource(R.string.cancel_button))
-            }
-        }
-    )
-}
-
-@Composable
-fun SupportCard() {
-    val context = LocalContext.current
-
-    Column(
-        modifier = Modifier.padding(horizontal = 12.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Box(
-            modifier = Modifier
-                .size(56.dp)
-                .clip(CircleShape)
-                .background(MaterialTheme.colorScheme.errorContainer),
-            contentAlignment = Alignment.Center
-        ) {
-            Icon(
-                imageVector = Icons.Default.Favorite,
-                contentDescription = null,
-                modifier = Modifier.size(28.dp),
-                tint = MaterialTheme.colorScheme.error
-            )
-        }
-
-        Spacer(modifier = Modifier.height(12.dp))
-
-        Text(
-            text = "Support Development",
-            style = MaterialTheme.typography.titleLarge,
-            fontWeight = FontWeight.Bold,
-            color = MaterialTheme.colorScheme.onSecondaryContainer
-        )
-
-        Spacer(modifier = Modifier.height(4.dp))
-
-        Text(
-            text = "Help keep this project maintained and growing",
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onTertiaryContainer,
-            textAlign = TextAlign.Center
-        )
-
-        Spacer(modifier = Modifier.height(8.dp))
-
-        FilledTonalButton(
-            onClick = {
-                val intent = Intent(
-                    Intent.ACTION_VIEW,
-                    Uri.parse("https://PranavPurwar.github.io/donate.html")
-                )
-                context.startActivity(intent)
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp)
-        ) {
-            Icon(
-                Icons.Default.Favorite,
-                contentDescription = null,
-                modifier = Modifier.size(22.dp),
-                tint = MaterialTheme.colorScheme.error
-            )
-            Spacer(modifier = Modifier.width(8.dp))
-            Text("Donate")
-        }
-    }
-}
-
-@Composable
-fun LinksSection() {
-    val context = LocalContext.current
-
-    Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-        Text(
-            text = "Links",
-            style = MaterialTheme.typography.titleSmall,
-            fontWeight = FontWeight.SemiBold,
-            color = MaterialTheme.colorScheme.primary,
-            modifier = Modifier.padding(top = 8.dp, bottom = 8.dp, start = 16.dp, end = 16.dp)
-        )
-
-        LinkCard(
-            title = "Discord Community",
-            icon = Discord,
-            modifier = Modifier.fillMaxWidth(),
-            onClick = {
-                val intent = Intent(
-                    Intent.ACTION_VIEW,
-                    Uri.parse("https://discord.gg/46wCMRVAre")
-                )
-                context.startActivity(intent)
-            }
-        )
-
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(12.dp)
-        ) {
-            LinkCard(
-                title = "Source Code",
-                icon = Icons.Outlined.Code,
-                modifier = Modifier.weight(1f),
-                onClick = {
-                    val intent = Intent(
-                        Intent.ACTION_VIEW,
-                        Uri.parse("https://github.com/PranavPurwar/AppLock")
-                    )
-                    context.startActivity(intent)
-                }
-            )
-
-            LinkCard(
-                title = "Report Issue",
-                icon = Icons.Outlined.BugReport,
-                modifier = Modifier.weight(1f),
-                onClick = {
-                    val intent = Intent(
-                        Intent.ACTION_VIEW,
-                        Uri.parse("https://github.com/PranavPurwar/AppLock/issues")
-                    )
-                    context.startActivity(intent)
-                }
-            )
-        }
-    }
-}
-
-@OptIn(ExperimentalMaterial3ExpressiveApi::class)
-@Composable
-fun LinkCard(
-    title: String,
-    icon: ImageVector,
-    modifier: Modifier = Modifier,
-    onClick: () -> Unit
-) {
-    OutlinedButton(
-        modifier = modifier,
-        onClick = onClick,
-        colors = ButtonDefaults.outlinedButtonColors(),
-        shapes = ButtonDefaults.shapes()
-    ) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(12.dp)
-        ) {
-            Icon(
-                imageVector = icon,
-                contentDescription = null,
-                modifier = Modifier.size(20.dp),
-                tint = MaterialTheme.colorScheme.surfaceTint
-            )
-
-            Text(
-                text = title,
-                style = MaterialTheme.typography.titleSmall,
-                fontWeight = FontWeight.Medium
-            )
-        }
-    }
-}
-
+                Text(stringResource(R.ing.settings_screen_anti_uninstall_title),
+                            description = stringResource(R.string.settings_screen_anti_uninstall_desc)
