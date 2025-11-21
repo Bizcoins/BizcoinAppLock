@@ -38,8 +38,8 @@ jobs:
         uses: gradle/actions/setup-gradle@v4.4.1
 
       - name: Build with gradle
-        # Execute the clean and assemble tasks (which builds all variants, including debug and release)
-        run: ./gradlew clean assemble
+        # *** MODIFIED: Added --stacktrace and --info for detailed debugging logs ***
+        run: ./gradlew clean assemble --stacktrace --info
 
       - name: Upload debug apks
         # Archive the debug APKs as an artifact
@@ -54,4 +54,3 @@ jobs:
         with:
           name: app-release
           path: app/build/outputs/apk/release # Standard path for Android release APKs
-          # Note: For release builds, you might want to adjust this to only upload a signed APK if signing is configured in the workflow.
