@@ -46,6 +46,18 @@ class AppLockRepository(private val context: Context) {
 
     fun isBiometricAuthEnabled(): Boolean = preferencesRepository.isBiometricAuthEnabled()
 
+    /**
+     * Sets whether Fingerprint Only Mode is enabled.
+     * When true, the PIN/Pattern fallback button may be hidden.
+     */
+    fun setFingerprintOnlyEnabled(enabled: Boolean) =
+        preferencesRepository.setFingerprintOnlyEnabled(enabled)
+
+    /**
+     * Checks if Fingerprint Only Mode is enabled.
+     */
+    fun isFingerprintOnlyEnabled(): Boolean = preferencesRepository.isFingerprintOnlyEnabled()
+
     fun setUseMaxBrightness(enabled: Boolean) = preferencesRepository.setUseMaxBrightness(enabled)
     fun shouldUseMaxBrightness(): Boolean = preferencesRepository.shouldUseMaxBrightness()
     fun setDisableHaptics(enabled: Boolean) = preferencesRepository.setDisableHaptics(enabled)
