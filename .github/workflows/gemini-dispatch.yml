@@ -1,32 +1,25 @@
 name: Gemini Dispatch
 
 on:
-  # Listens to comments created in Issues and Pull Requests
   issue_comment:
     types: [created]
-  # Listens to comments created specifically in Pull Request reviews
   pull_request_review_comment:
     types: [created]
-  # Listens to comments (replies) created in Discussion threads
   discussion_comment:
     types: [created]
 
 jobs:
   run_gemini_cli:
-    # The 'if' condition needs to check the body of the *comment*
-    # for all of the different event types (issue, PR review, discussion comment)
     if: contains(github.event.comment.body, '@gemini-cli')
 
     runs-on: ubuntu-latest
 
-    steps:
+    steps: # <--- THIS LINE MUST BE ALIGNED WITH 'runs-on'
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0 # Needed for full context
 
-          - uses: google-github-actions/gemini-action@v1 # <-- CHANGE IS HERE
+      - uses: google-github-actions/gemini-action@v1 # <-- Note the CORRECT action name
         with:
-          # Use the Secret you created
           gemini_api_key: ${{ secrets.GEMINI_API_KEY }}
-          # This tells the Action to respond to comments/mentions
           action_type: 'dispatch'
