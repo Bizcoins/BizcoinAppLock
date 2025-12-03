@@ -26,3 +26,14 @@ jobs:
           gemini_api_key: ${{ secrets.GEMINI_API_KEY }}
           # This tells the Action to respond to comments/mentions
           action_type: 'dispatch'
+
+
+on:
+  # This listens to comments in regular Issues
+  issue_comment:
+    types: [created]
+  # This listens to replies in Discussion threads
+  discussion_comment:
+    types: [created]
+
+# ... rest of the file
