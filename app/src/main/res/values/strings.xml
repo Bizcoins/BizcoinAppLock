@@ -220,7 +220,7 @@ Make sure you have Shizuku installed and enabled via ADB. Tap \'Next\' to grant 
     <string name="settings_screen_biometric_auth_desc_available">Use fingerprint or face unlock to
         unlock apps
     </string>
-    <string name="settings_screen_biometric_auth_desc_unavailable">Biometric authentication not setup/unavailable.
+    <string name="settings_screen_biometric_auth_desc_unavailable">Biometric authentication not set up/unavailable.
     </string>
     <string name="settings_screen_shizuku_permission_granted">Shizuku permission granted</string>
     <string name="settings_screen_shizuku_permission_required_desc">Shizuku permission is required for advanced features.
