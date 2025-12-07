@@ -95,7 +95,7 @@ Make sure you have Shizuku installed and enabled via ADB. Tap \'Next\' to grant 
     <string name="main_screen_anti_uninstall_log">Anti-uninstall is enabled</string>
     <string name="main_screen_shizuku_not_available_toast">Shizuku not available. Please install and configure Shizuku.</string>
     <string name="main_screen_overlay_permission_dialog_title">Overlay Permission Required</string>
-    <string name="main_screen_overlay_permission_dialog_text">Please grant the app permission to draw overlays in settings. This is required to allow app to show lock screen.</string>
+    <string name="main_screen_overlay_permission_dialog_text">Please grant the app permission to draw overlays in settings. This is required to allow the app to show the lock screen.</string>
     <string name="main_screen_overlay_permission_open_settings_button">Open Settings</string>
     <string name="main_screen_shizuku_manual_permission_toast">Please grant Shizuku permission manually</string>
     <string name="main_screen_device_admin_explanation">App Lock requires Device Admin permission to prevent uninstallation. It will not affect your device\'s functionality.</string>
