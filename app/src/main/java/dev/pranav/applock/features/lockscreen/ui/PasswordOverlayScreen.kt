@@ -157,6 +157,7 @@ class PasswordOverlayActivity : FragmentActivity() {
 
         val layoutParams = window.attributes
         layoutParams.type = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
+        layoutParams.type = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY 
         
         if (appLockRepository.shouldUseMaxBrightness()) {
             layoutParams.screenBrightness = WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_FULL
