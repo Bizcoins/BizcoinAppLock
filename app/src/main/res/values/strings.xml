@@ -100,7 +100,7 @@ Make sure you have Shizuku installed and enabled via ADB. Tap \'Next\' to grant 
     <string name="main_screen_shizuku_manual_permission_toast">Please grant Shizuku permission manually</string>
     <string name="main_screen_device_admin_explanation">App Lock requires Device Admin permission to prevent uninstallation. It will not affect your device\'s functionality.</string>
     <string name="main_screen_join_community_dialog_title">Join the Community</string>
-    <string name="main_screen_join_community_dialog_text">Join our discord community for updates and support.</string>
+    <string name="main_screen_join_community_dialog_text">Join our Discord community for updates and support.</string>
     <string name="main_screen_join_community_join_discord_button">Join Discord</string>
     <string name="main_screen_join_community_dismiss_button">Dismiss</string>
     <string name="main_screen_support_development_dialog_title">Support Development</string>
