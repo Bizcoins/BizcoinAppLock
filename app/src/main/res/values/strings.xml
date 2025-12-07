@@ -10,7 +10,7 @@
     <string name="choose_app_detection">Choose App Detection Method</string>
     <string name="app_detection_desc">Select how you want AppLock to detect when protected apps are launched.</string>
     <string name="notif_perm">Notification Permission</string>
-    <string name="notif_perm_desc">AppLock needs permission to show notifications to keep you informed and keep running in background properly. Tap \'Next\' to grant permission.</string>
+    <string name="notif_perm_desc">AppLock needs permission to show notifications to keep you informed and keep running in the background properly. Tap \'Next\' to grant permission.</string>
     <string name="notif_perm_granted">Notification permission is automatically granted on your Android version.</string>
     <string name="welc_applock">Welcome to AppLock</string>
     <string name="welcome_desc">Protect your apps and privacy with AppLock. We\'ll guide you through a quick setup.</string>
