@@ -1,12 +1,15 @@
 name: Android CI
 
-# Triggers the workflow on push, pull request events, and manually via workflow_dispatch.
+# Triggers the workflow only manually via workflow_dispatch.
 on:
-  push:
-    branches: [ master, main ] # Adjust branches as needed
-  pull_request:
-    branches: [ master, main ]
+  # The push and pull_request events are REMOVED.
   workflow_dispatch:
+    # Optional: You can add inputs here if you want to pass parameters
+    # inputs:
+    #   environment:
+    #     description: 'Environment to deploy to'
+    #     required: true
+    #     default: 'Test'
 
 jobs:
   build:
@@ -14,44 +17,9 @@ jobs:
 
     steps:
       - name: Checkout repository
-        # Action to check out the repository code
+        # ... steps remain the same ...
         uses: actions/checkout@v4.2.2
 
-      - name: Set up JDK 17
-        # Action to set up the Java Development Kit
-        uses: actions/setup-java@v4.7.1
-        with:
-          distribution: 'temurin' # Recommended distribution for better performance/reliability
-          java-version: '17'
-          cache: 'gradle' # Cache Gradle dependencies
-
-      - name: Give permission to executable
-        # Ensure the gradlew script is executable
-        run: chmod +x gradlew
-
-      - name: Setup Android SDK
-        # Action to make sure the Android SDK is configured
-        uses: android-actions/setup-android@v3.2.2
-
-      - name: Setup Gradle
-        # Action to cache and configure Gradle
-        uses: gradle/actions/setup-gradle@v4.4.1
-
-      - name: Build with gradle
-        # Execute the clean and assemble tasks (which builds all variants, including debug and release)
-        run: ./gradlew clean assemble
-
-      - name: Upload debug apks
-        # Archive the debug APKs as an artifact
-        uses: actions/upload-artifact@v4.6.2
-        with:
-          name: app-debug
-          path: app/build/outputs/apk/debug # Standard path for Android debug APKs
-
-      - name: Upload release apks
-        # Archive the release APKs as an artifact
-        uses: actions/upload-artifact@v4.6.2
-        with:
-          name: app-release
-          path: app/build/outputs/apk/release # Standard path for Android release APKs
-          # Note: For release builds, you might want to adjust this to only upload a signed APK if signing is configured in the workflow.
+      # ... remaining steps for setup, build, and upload ...
+- name: Run Gemini CLI
+  uses: google-github-actions/run-gemini-cli@v0.1.15
