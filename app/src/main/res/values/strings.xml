@@ -10,7 +10,7 @@
     <string name="choose_app_detection">Choose App Detection Method</string>
     <string name="app_detection_desc">Select how you want AppLock to detect when protected apps are launched.</string>
     <string name="notif_perm">Notification Permission</string>
-    <string name="notif_perm_desc">AppLock needs permission to show notifications to keep you informed and keep running in background properly. Tap \'Next\' to grant permission.</string>
+    <string name="notif_perm_desc">AppLock needs permission to show notifications to keep you informed and keep running in the background properly. Tap \'Next\' to grant permission.</string>
     <string name="notif_perm_granted">Notification permission is automatically granted on your Android version.</string>
     <string name="welc_applock">Welcome to AppLock</string>
     <string name="welcome_desc">Protect your apps and privacy with AppLock. We\'ll guide you through a quick setup.</string>
@@ -95,12 +95,12 @@ Make sure you have Shizuku installed and enabled via ADB. Tap \'Next\' to grant 
     <string name="main_screen_anti_uninstall_log">Anti-uninstall is enabled</string>
     <string name="main_screen_shizuku_not_available_toast">Shizuku not available. Please install and configure Shizuku.</string>
     <string name="main_screen_overlay_permission_dialog_title">Overlay Permission Required</string>
-    <string name="main_screen_overlay_permission_dialog_text">Please grant the app permission to draw overlays in settings. This is required to allow app to show lock screen.</string>
+    <string name="main_screen_overlay_permission_dialog_text">Please grant the app permission to draw overlays in settings. This is required to allow the app to show the lock screen.</string>
     <string name="main_screen_overlay_permission_open_settings_button">Open Settings</string>
     <string name="main_screen_shizuku_manual_permission_toast">Please grant Shizuku permission manually</string>
     <string name="main_screen_device_admin_explanation">App Lock requires Device Admin permission to prevent uninstallation. It will not affect your device\'s functionality.</string>
     <string name="main_screen_join_community_dialog_title">Join the Community</string>
-    <string name="main_screen_join_community_dialog_text">Join our discord community for updates and support.</string>
+    <string name="main_screen_join_community_dialog_text">Join our Discord community for updates and support.</string>
     <string name="main_screen_join_community_join_discord_button">Join Discord</string>
     <string name="main_screen_join_community_dismiss_button">Dismiss</string>
     <string name="main_screen_support_development_dialog_title">Support Development</string>
@@ -154,7 +154,7 @@ Make sure you have Shizuku installed and enabled via ADB. Tap \'Next\' to grant 
     <string name="settings_screen_anti_uninstall_title">Anti-Uninstall Protection</string>
     <string name="settings_screen_anti_uninstall_desc">Prevent unauthorized uninstallation of App Lock</string>
     <string name="settings_screen_haptic_feedback_title">Haptic Feedback</string>
-    <string name="settings_screen_haptic_feedback_desc">Disable haptic feedback on key presses</string>
+    <string name="settings_screen_haptic_feedback_desc">Enable haptic feedback on key presses</string>
     <string name="settings_screen_backend_implementation_title">Backend Implementation</string>
     <string name="settings_screen_backend_implementation_desc">Select the method AppLock uses to detect foreground apps</string>
     <string name="settings_screen_backend_implementation_accessibility_title">Accessibility Service</string>
@@ -220,7 +220,7 @@ Make sure you have Shizuku installed and enabled via ADB. Tap \'Next\' to grant 
     <string name="settings_screen_biometric_auth_desc_available">Use fingerprint or face unlock to
         unlock apps
     </string>
-    <string name="settings_screen_biometric_auth_desc_unavailable">Biometric authentication not setup/unavailable.
+    <string name="settings_screen_biometric_auth_desc_unavailable">Biometric authentication not set up/unavailable.
     </string>
     <string name="settings_screen_shizuku_permission_granted">Shizuku permission granted</string>
     <string name="settings_screen_shizuku_permission_required_desc">Shizuku permission is required for advanced features.
